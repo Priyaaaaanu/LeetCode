@@ -1,0 +1,18 @@
+//asked to use the same array without using any extra space.
+
+class Solution {
+    public void moveZeroes(int[] nums) {
+        int ind=0;
+        for(int i:nums){
+            if(i!=0){
+                nums[ind]=i;
+                ind++;
+            }
+        }
+
+        while(ind<=nums.length-1){
+            nums[ind]=0;
+            ind++;
+        }
+    }
+}
