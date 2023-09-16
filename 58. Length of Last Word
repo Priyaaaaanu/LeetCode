@@ -1,0 +1,24 @@
+Examples and test cases:
+
+1) I/P: "Hello world"
+   O/P: 5
+
+2) I/P: "   fly in the sky   "
+  O/P: 3
+
+class Solution {
+    public int lengthOfLastWord(String s) {
+        String str = s.trim();  //ignore the whitespaces present.
+        String ans = "";
+        int n = str.length();
+        for(int i=n-1; i>=0; i--){
+            char ch = str.charAt(i);
+            if(ch!=' '){
+                ans = ans + ch;
+            }else{
+                break;
+            }
+        }
+        return ans.length();
+    }
+}
