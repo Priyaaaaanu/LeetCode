@@ -33,6 +33,8 @@ Only one valid answer exists.
 
 Solution:
 
+//TC = O(N2)
+//SC = o(N)  //adding final ans to array and returning it
 
 class Solution {
     public int[] twoSum(int[] nums, int target) {
@@ -52,5 +54,26 @@ class Solution {
 
     }
 
+}
+
+
+Can we optimize it !!
+Yes here me "The HashMap" 
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int n = nums.length;
+        HashMap<Integer,Integer> numMap = new HashMap<>();
+        
+        for(int i = 0; i < n; i++) {
+            int val = target - nums[i];
+            if (numMap.containsKey(val)) {
+                return new int[]{numMap.get(val), i};
+            }
+            numMap.put(nums[i], i);
+        }
+
+        return new int[]{}; // No solution found
+    }
 }
     
