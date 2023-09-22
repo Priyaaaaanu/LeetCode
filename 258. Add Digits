@@ -1,11 +1,10 @@
-Any number where it's digits add to 9 is always divisible by 9. (18, 27, 36, 45, 54, 63, 72, 81, 90, etc.) 
-Therefore the 'digital root' for any number divisible by 9 is always 9. 
-You can see this even in larger numbers like 99 because 9 + 9 = 18, and then 1 + 8 = 9 still, 
-so the root always becomes 9 for any numbers divisible by 9.
+If sum of digits is 9 then the given number is divisible by 9. 
+Also larger numbers like 99 because 9 + 9 = 18, and then 1 + 8 = 9 still, 
+so the 'digital root' always becomes 9 for any numbers divisible by 9.
 
 Additionally, 0 always has a digital root of 0 obviously.
 
-The only other cases you need to worry about to find the digital root are when it isn't 0 or 9.
+other than 0 ans 9 !!!
 
 So for any number that isn't 0 and isn't divisible by 9, the root will always n % 9 for a given number n. 
 (the difference between given number n and the nearest number that is divisible by 9, 
