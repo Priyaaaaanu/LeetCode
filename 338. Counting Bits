@@ -1,0 +1,29 @@
+My Thinking:
+For each number count the number of 1s present in binary
+So number AND with 1 with left shifts will gives the result.
+
+TC = O(N)
+SC = O(N)
+
+class Solution {
+    public int[] countBits(int n) {
+        int n1=n+1;
+        int[] ans = new int[n1];
+        for(int i=0; i<=n; i++){
+            int numbits = checkones(i);
+            ans[i]=numbits;
+        }
+        return ans;
+    }
+
+    public int checkones(int number){
+        int c=0;
+        while(number>0){
+            if((number&1)==1){
+                c++;
+            }
+            number=number>>1;
+        }
+        return c;
+    }
+}
