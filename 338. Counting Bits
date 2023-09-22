@@ -2,8 +2,8 @@ My Thinking:
 For each number count the number of 1s present in binary
 So number AND with 1 with left shifts will gives the result.
 
-TC = O(N)
-SC = O(N)
+TC = O(N*logN) //since right shift is occuring N times.
+SC = O(N)  //using extra space for an array.
 
 class Solution {
     public int[] countBits(int n) {
