@@ -1,0 +1,29 @@
+Using two pointer approach
+TC=O(N)
+SC=O(1)
+
+IDEA: s=0, e=n-1, s++ only when s is even
+                  e-- only when e is odd
+                  swap if above two is false.
+
+class Solution {
+    public int[] sortArrayByParity(int[] nums) {
+        int n = nums.length;
+        if(n==1) return nums;
+        int s = 0;
+        int e = n-1;
+        while(s<e){
+            if(nums[s]%2==0){
+                s++;
+            }else if(nums[e]%2==1){
+                e--;
+            }else{
+                int temp = nums[s];
+                nums[s]=nums[e];
+                nums[e]=temp;
+            }
+        }
+        return nums;
+        
+    }
+}
