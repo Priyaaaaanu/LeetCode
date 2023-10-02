@@ -1,0 +1,22 @@
+class Solution {
+    public boolean winnerOfGame(String colors) {
+        int n = colors.length();
+        
+        int alicescore = 0;
+        int bobscore = 0;
+        for(int i=1; i<n-1; i++){
+            char current = colors.charAt(i);
+            char prechar = colors.charAt(i-1);
+            char postchar = colors.charAt(i+1);
+
+            if(current=='A' && prechar=='A' && postchar=='A'){
+                alicescore++;
+            }
+            else if(current=='B' && prechar=='B' && postchar=='B'){
+                bobscore++;
+            }
+        }
+        return alicescore>bobscore;
+
+    }
+}
