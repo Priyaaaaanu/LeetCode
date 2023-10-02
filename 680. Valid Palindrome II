@@ -1,0 +1,27 @@
+class Solution {
+    public boolean validPalindrome(String s) {
+        int n = s.length();
+        int st=0;
+        int en=n-1;
+        while(st<en){
+            if(s.charAt(st)==s.charAt(en)){
+                st++;
+                en--;
+            }
+            else{
+                return ispalindrome(s,st+1,en)||ispalindrome(s,st,en-1);
+            }
+        }
+        return true;
+    }
+    public boolean ispalindrome(String s, int start, int end){
+        while(start<end){
+            if(s.charAt(start)==s.charAt(end)){
+                start++;
+                end--;
+            }
+            else return false;
+        }
+        return true;
+    }
+}
