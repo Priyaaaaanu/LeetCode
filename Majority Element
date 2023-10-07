@@ -1,0 +1,38 @@
+return the number which occurs >n/2 times
+
+Hashmap approach
+
+class Solution {
+    public int majorityElement(int[] nums) {
+        int n = nums.length;
+        HashMap<Integer,Integer> hm = new HashMap<>();
+        for(int i=0; i<n; i++){
+            if(!hm.containsKey(nums[i])){
+                hm.put(nums[i],1);
+            }else{
+                int val=hm.get(nums[i]);
+                val++;
+                hm.put(nums[i],val);
+            }
+        }
+        int ans = 0;
+        for(HashMap.Entry<Integer,Integer> entry:hm.entrySet()){
+            int val = entry.getValue();
+            if(val>n/2){
+                ans=entry.getKey();
+            }
+        }
+        return ans;
+    }
+}
+
+
+Sorting approach:
+
+class Solution {
+    public int majorityElement(int[] nums) {
+        Arrays.sort(nums);
+        int n = nums.length;
+        return nums[n/2];
+    }
+}
