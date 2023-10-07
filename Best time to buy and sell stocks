@@ -1,0 +1,40 @@
+using Carryforward
+tc=o(n^2)
+sc=o(1)
+
+class Solution {
+    public int maxProfit(int[] prices) {
+        int ans = 0;
+        int n = prices.length;
+        for(int i=0; i<n; i++){
+            int count=0;
+            for(int j=i+1; j<n; j++){
+                count=prices[j]-prices[i];
+                ans=Math.max(ans,count);
+            }
+        }
+        return ans;
+    }
+}
+
+tc=o(n)
+sc=o(1)
+
+class Solution {
+    public int maxProfit(int[] prices) {
+        int n = prices.length;
+        int leastnum=Integer.MAX_VALUE;
+        int maxstock=0;
+        int resofeach=0;
+        for(int i=0; i<n; i++){
+            if(prices[i]<leastnum){
+                leastnum=prices[i];
+            }
+            resofeach=prices[i]-leastnum;
+            if(maxstock<resofeach){
+                maxstock=resofeach;
+            }
+        }
+        return maxstock;
+    }
+}
