@@ -1,0 +1,58 @@
+Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times.
+
+APPROACH 1: Iterate over all elements and check for frequency of each element. TC=O(N^2)
+APPROACH 2: Using Sorting. TC=O(NlogN)
+APPROACH 3: Using HashMap. TC=O(N) , SC=O(N)
+CAN WE DO USING SC=O(1) !!
+
+YES!!
+
+MOORE VOTING ALGORITHM !!
+
+TC= O(N)
+SC= O(1)
+
+class Solution {
+    public List<Integer> majorityElement(int[] nums) {
+        int n = nums.length;
+        int c1=0;
+        int c2=0;
+        int number1=0;
+        int number2=0;
+        ArrayList<Integer> ans = new ArrayList<>();
+        for(int i=0; i<n; i++){
+            if(c1==0 && nums[i]!=number2){
+                c1=1;
+                number1=nums[i];
+            }else if(c2==0 && nums[i]!=number1){
+                c2=1;
+                number2=nums[i];
+            }else if(nums[i]==number1){
+                c1++;
+            }else if(nums[i]==number2){
+                c2++;
+            }else{
+                c1--;
+                c2--;
+            }
+        }
+
+        int count1=0;
+        int count2=0;
+        int timesappear = n/3;
+        for(int i=0; i<n; i++){
+            if(nums[i]==number1){
+                count1++;
+            }else if(nums[i]==number2){
+                count2++;
+            }
+        }
+        if(count1>timesappear){
+            ans.add(number1);
+        }
+        if(count2>timesappear){
+            ans.add(number2);
+        }
+        return ans;
+    }
+}
