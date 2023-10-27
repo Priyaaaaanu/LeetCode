@@ -1,0 +1,32 @@
+TC = O(N^2)
+SC = O(1)
+
+class Solution {
+    public String longestPalindrome(String s) {
+        int n = s.length();
+        if(n==0){
+            return "";
+        }    
+        String longest = s.substring(0,1);
+        for(int i=0; i<n-1; i++){
+            String oddpal = centerindex(s, i, i);
+            if(oddpal.length()>longest.length()){
+                longest = oddpal;
+            }
+
+            String evenpal = centerindex(s,i,i+1);
+            if(evenpal.length()>longest.length()){
+                longest = evenpal;
+            }
+        }
+        return longest;
+    }
+    public String centerindex(String str, int l, int r){
+        int n = str.length();
+        while(l>=0 && r<n && str.charAt(l)==str.charAt(r)){
+            l--;
+            r++;
+        }
+        return str.substring(l+1,r);
+    }
+}
