@@ -1,0 +1,30 @@
+given : prefix xor of array elements
+to find : the original array elements
+
+properties help:
+A^A = 0
+A^0 = A
+
+if prefix xor is given, [5,2,0,3,1]
+5 remains same in ans array
+2 came, becz 5^some_num = 2
+0 came, becz xor of ele till previous ^ some ele = 0
+
+IDEA: after thinking , to get 2 or 0 or 3 or 1, i should remove that ele from previous xor(in given array), so can get the original one.
+
+
+
+class Solution {
+    public int[] findArray(int[] pref) {
+        int n = pref.length;
+        if(n==1){
+            return pref;
+        }
+        int[] ans = new int[n];
+        ans[0]=pref[0];
+        for(int i=1; i<n; i++){
+            ans[i]=pref[i-1]^pref[i];
+        }
+        return ans;
+    }
+}
