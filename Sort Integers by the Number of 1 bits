@@ -1,0 +1,51 @@
+class Solution {
+    public int[] sortByBits(int[] arr) {
+        int n = arr.length;
+        int[] ans = new int[n];
+
+        ArrayList<Integer> arrl = new ArrayList<>();
+        for(int i=0; i<n; i++){
+            arrl.add(arr[i]);
+        }
+
+        HashMap<Integer, Integer> hm = new HashMap<>();
+        for(int i=0; i<n; i++){
+            hm.put(arr[i],countSetBits(arr[i]));
+        }
+
+        Collections.sort(arrl, new Comparator<Integer>(){
+            public int compare(Integer num1, Integer num2){
+                int c1 = hm.get(num1);
+                int c2 = hm.get(num2);
+                
+                if(c1==c2){
+                    if(num1<num2){
+                        return -1; 
+                    }else if(num1>num2){
+                        return 1;
+                    }else return 0;
+                }else if(c1<c2){
+                    return -1;
+                }else{
+                    return 1;
+                }
+            }
+        });
+
+        for(int i=0; i<n; i++){
+            ans[i]=arrl.get(i);
+        }
+        return ans;
+
+    }
+    public int countSetBits(int num){
+        int cnt = 0;
+        while(num>0){
+            if((num&1)==1){
+                cnt++;
+            }
+            num = num>>1;
+        }
+        return cnt;
+    }
+}
