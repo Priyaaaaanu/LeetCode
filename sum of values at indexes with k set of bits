@@ -1,0 +1,31 @@
+class Solution {
+    public int sumIndicesWithKSetBits(List<Integer> nums, int k) {
+        int ans = 0;
+        int n = nums.size();
+        for(int i=0; i<n; i++){
+            int count = countBits(i);
+            if(count==k){
+                ans = ans + nums.get(i);
+            }
+        }    
+        return ans;
+    }
+
+    public int countBits(int number){
+        int count = 0;
+        while(number>0){
+            if(checkBit(number)==1){
+                count=count+1;
+            }
+            number = number>>1;
+        }
+        return count;
+    }
+
+    public int checkBit(int num){
+        if((num&1)==1){
+            return 1;
+        }
+        return 0;
+    }
+}
